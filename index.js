@@ -25,71 +25,61 @@ function userPrompt () {
             type: 'rawlist',
             message: 'What would you like to do?',
             choices: [
-                'Add department',
-                'Add role',
-                'Add employee',
-                'View department',
-                'View role',
-                'View employee',
-                'Delete department',
-                'Delete role',
-                'Delete employee',
-                'View Budget'  
+                'View all employees',
+                'View all employees by department',
+                'View all employees by manager',
+                'Add an employee',
+                'Remove an employee',
+                'Update employee role',
+                'Update manager role',
+                'Update employee manager',
+                'View all roles',
+                'Add a role',
+                'Remove a role' 
             ]
         })
-        .then (function(answer) {
-            switch (answer.prompt) {
-                case 'Add department':
-                    addDepartment();
+        .then (answer => {
+            switch (answer.userPrompt) {
+                case 'View all employees':
+                    viewAllEmployees();
+                    break;
+
+                case 'View all employees by department':
+                    viewAllEmployeesByDepartment();
+                    break;
+
+                case 'View all emplyees by manager':
+                    viewAllEmployeesByManager();
+                    break;
+
+                case 'Add an employee':
+                    addEmployee();
+                    break;
+
+                case 'Remove an employee':
+                    removeEmployee();
+                    break;
+
+                case 'Update employee role':
+                    updateEmployeeRole();
+                    break;
+
+                case 'Update employee manager':
+                    updateEmployeeManager();
+                    break;
+
+                case 'View all roles':
+                    viewAllRoles();
                     break;
 
                 case 'Add role':
                     addRole();
                     break;
 
-                case 'Add employee':
-                    addEmployee();
-                    break;
-
-                case 'View department':
-                    viewDepartment();
-                    break;
-
-                case 'View role':
-                    viewRole();
-                    break;
-
-                case 'View employee':
-                    viewEmployee();
-                    break;
-
-                case 'Delete department':
-                    deleteDepartment();
-                    break;
-
-                case 'Delete role':
-                    deleteRole();
-                    break;
-
-                case 'Delete employee':
-                    deleteEmployee();
-                    break;
-
-                case 'View budget':
-                    viewBudget();
+                case 'Remove role':
+                    removeRole();
                     break;
             }
         })
 }
 
-// function addDepartment () {
-//     inquirer
-//         .prompt({
-//             name: 'department',
-//             type: 'input',
-//             message: 'Enter the name of the department you would like to add'
-//         })
-//         .then(function(answer) {
-//             const query = 'INSERT INTO department'
-//         })
-// }
