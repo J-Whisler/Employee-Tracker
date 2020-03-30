@@ -5,7 +5,7 @@ const prompts = [
         message: "What would you like to to?",
         choices: [
             'View all employees',
-            'View employees by department',
+            'View all employees by department',
             'View all employees by manager',
             'Add an employee',
             'Remove an employee',

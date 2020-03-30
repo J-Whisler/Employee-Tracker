@@ -1,51 +1,14 @@
-DROP DATABASE IF EXISTS employeeDB;
-CREATE database employeeDB;
+INSERT INTO department(departmentName)
+VALUES ('Engineering'), ('Sales'), ('Finance'), ('Legal');
 
-USE employeeDB;
-
-CREATE TABLE department (
-  departmentID INT NOT NULL AUTO_INCREMENT,
-  departmentName VARCHAR(30) NOT NULL,
-  PRIMARY KEY (departmentID)
-);
-
-CREATE TABLE role (
-  roleID INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(30) NOT NULL,
-  salary DEC NOT NULL,
-  departmentID INT,
-  PRIMARY KEY(roleID),
-  CONSTRAINT FK_department
-    FOREIGN KEY (departmentID) REFERENCES department(departmentID),
- 
-);
-
-CREATE TABLE employee (
-    employeeID INT NOT NULL AUTO_INCREMENT,
-    firstName VARCHAR(30) NOT NULL,
-    lastName VARCHAR(30) NOT NULL,
-    employeeRole INT,
-    PRIMARY KEY(employeeID),
-    CONSTRAINT FK_role FOREIGN KEY (employeeRole)
-    REFERENCES role(roleID),
-    managerID INT,
-    CONSTRAINT FK_manager
-    FOREIGN KEY (managerID)
-    REFERENCES employee(employeeID)
-    
-)
-
-INSERT INTO department(department_name)
-VALUES ('Engineering'), ('Sales'), ('Finance'), ('Legal')
-
-INSERT INTO role(title, salary, department_id)
+INSERT INTO role(title, salary, departmentID)
 VALUES ('Sales lead', 100000, 2), 
        ('Sales person', 80000, 2), 
        ('Lead Engineer', 150000, 1), 
        ('Software engineer', 120000, 1), 
        ('Accountant', 125000, 3),
        ('Legal Team Lead', 250000, 4),
-       ('Lawyer' 190000, 4)
+       ('Lawyer', 190000, 4);
 
 INSERT INTO employee(firstName, lastName, employeeRole, managerID)
 VALUES ('Jacob', 'Whisler', 1, 1),
@@ -59,4 +22,9 @@ VALUES ('Jacob', 'Whisler', 1, 1),
        ('Creed', 'Bratton', 6, 4);
 
 
-
+`SELECT employee.employeeID, employee.firstName, employee.lastName, department.departmentName, role.title, role.salary
+                FROM employee
+                LEFT JOIN role ON employee.employeeRole = role.roleID
+                LEFT JOIN department ON role.departmentId = department.departmentID
+                    WHERE department.departmentName = ?
+                    ORDER BY employee.employeeID ASC`
