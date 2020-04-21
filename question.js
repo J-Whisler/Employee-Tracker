@@ -2,18 +2,15 @@ const prompts = [
     {
         type: "rawlist",
         name: "prompts",
-        message: "What would you like to to?",
+        message: "What would you like to do?",
         choices: [
             'View all employees',
-            'View all employees by department',
-            'View all employees by manager',
             'Add an employee',
-            'Remove an employee',
-            'Update employee role',
-            'Update manager role',
+            'View all departments',
+            'Add a department',
+            'Remove a department',
             'View all roles',
-            'Add role',
-            'Remove a role',
+            'Add a role',
             'Exit'
         ]
     }
