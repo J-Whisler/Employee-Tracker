@@ -3,12 +3,6 @@ CREATE database employeeDB;
 
 USE employeeDB;
 
-DELETE FROM employee WHERE firstName = 'Jim' AND lastName = 'Halpert';
-
-SELECT * FROM employee; 
-
-
-
 CREATE TABLE department (
   departmentID INT NOT NULL AUTO_INCREMENT,
   departmentName VARCHAR(30) NOT NULL,
